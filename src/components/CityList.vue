@@ -6,7 +6,7 @@
         :key="item.id"
         :city="item"
         @delete-city="modalHandler"
-        @click.stop="goToWeatherPage(item)"
+        @to-detail="goToWeatherPage"
       />
       <template #fallback>
         <div class="grid grid-flow-row grid-cols-[1fr_2fr]">
@@ -19,7 +19,7 @@
         </div>
       </template>
     </Suspense>
-    <MainModal :modal-show="deleteModal">
+    <MainModal :modal-show="deleteModal" @modal-close="deleteHandler">
       <template #header>
         <div class="flex flex-row text-lg py-4 border-b border-gray-600">
           {{ $t('deleteModal.title') }}
